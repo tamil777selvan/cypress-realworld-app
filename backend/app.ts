@@ -29,7 +29,7 @@ import { frontendPort, getBackendPort } from "../src/utils/portUtils";
 require("dotenv").config();
 
 const corsOption = {
-  origin: `http://localhost:${frontendPort}`,
+  origin: `http://0.0.0.0:${frontendPort}`,
   credentials: true,
 };
 

@@ -125,13 +125,13 @@ yarn cypress:open
 > ```js
 > {
 >   env: {
->     apiUrl: "http://localhost:13001",
+>     apiUrl: "http://0.0.0.0:13001",
 >     codeCoverage: {
->       url: "http://localhost:13001/__coverage__"
+>       url: "http://0.0.0.0:13001/__coverage__"
 >     },
 >   },
 >   e2e: {
->     baseUrl: "http://localhost:13000"
+>     baseUrl: "http://0.0.0.0:13000"
 >   }
 > }
 > ```
@@ -227,7 +227,7 @@ Prerequisites include an [Amazon Cognito][cognito] account. Environment variable
 
 - A user pool is required (identity pool is not used here)
   - The user pool must have a hosted UI domain configured, which must:
-    - allow callback and sign-out URLs of `http://localhost:3000/`,
+    - allow callback and sign-out URLs of `http://0.0.0.0:3000/`,
     - allow implicit grant Oauth grant type,
     - allow these OpenID Connect scopes:
       - aws.cognito.signin.user.admin
@@ -236,7 +236,7 @@ Prerequisites include an [Amazon Cognito][cognito] account. Environment variable
   - The user pool must have an app client configured, with:
     - enabled auth flow `ALLOW_USER_PASSWORD_AUTH`, only for programmatic login flavor of test.
     - The `cy.origin()` flavor of test only requires auth flow `ALLOW_USER_SRP_AUTH`, and does not require `ALLOW_USER_PASSWORD_AUTH`.
-  - The user pool must have a user corresponding to the `AWS_COGNITO` env vars mentioned below, and the user's Confirmation Status must be `Confirmed`. If it is `Force Reset Password`, then use a browser to log in once at `http://localhost:3000` while `yarn dev:cognito` is running to reset their password.
+  - The user pool must have a user corresponding to the `AWS_COGNITO` env vars mentioned below, and the user's Confirmation Status must be `Confirmed`. If it is `Force Reset Password`, then use a browser to log in once at `http://0.0.0.0:3000` while `yarn dev:cognito` is running to reset their password.
 
 The test knobs are in a few places:
 
